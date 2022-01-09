@@ -1,0 +1,17 @@
+<mat-toolbar class="header" color="primary">
+  <button mat-icon-button [matMenuTriggerFor]="menu" class="header-icon" aria-label="icon-button with menu icon">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <a class="header-title" routerLink="/">{{title}}</a>
+  <span class="header-spacer"></span>
+  <!-- <button mat-icon-button class="header-icon favorite-icon" aria-label="icon-button with heart icon">
+    <mat-icon>favorite</mat-icon>
+  </button>
+  <button mat-icon-button class="header-icon" aria-label="icon-button with share icon">
+    <mat-icon>share</mat-icon>
+  </button> -->
+</mat-toolbar>
+
+<mat-menu #menu="matMenu">
+  <app-menu></app-menu>
+</mat-menu>
