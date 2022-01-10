@@ -22,8 +22,8 @@ export class ItemsListComponent implements OnInit {
 
   loadData() {
     this.jpService.getPosts()
-      .subscribe(data => {
-        console.log('data', data);
+      .subscribe((data: Post[]) => {
+        console.log('posts', data);
         this.posts = data;
       });
   }

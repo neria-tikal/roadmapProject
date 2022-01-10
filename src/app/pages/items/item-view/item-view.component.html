@@ -1,1 +1,29 @@
-<p>item-view {{itemId}} works!</p>
+<div *ngIf="!!post && !!user">
+  <h1>{{ post.title }}</h1>
+  <h3>
+    Author: 
+    <a mat-button [routerLink]="" (click)="openUserDetails()"
+      matTooltip="Tap for author details" matTooltipPosition="right">{{ user.name }}</a>
+  </h3>
+
+  <p>{{ post.body }}</p>
+
+  <mat-divider></mat-divider>
+
+  <mat-list role="list" *ngIf="comments; else noComments">
+    <div matSubheader>Comments</div>
+    <mat-list-item *ngFor="let c of comments" role="listitem">
+      <div matLine>
+        {{ c.name }} | 
+        <a [href]="'mailto:' + c.email"
+        matTooltip="Tap to send email to user" matTooltipPosition="above">{{ c.email }}</a>
+      </div>
+      <div matLine>{{ c.body }}</div>
+    </mat-list-item>
+  </mat-list>
+  <ng-template #noComments>
+    <h3 class="text-center">No Comments</h3>
+  </ng-template>
+
+</div>
+

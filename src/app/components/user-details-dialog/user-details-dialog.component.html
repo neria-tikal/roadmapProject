@@ -1,0 +1,13 @@
+<h1 mat-dialog-title>{{ data.user.name }}</h1>
+<div mat-dialog-content>
+  <mat-list>
+    <mat-list-item>username: {{ data.user?.username }}</mat-list-item>
+    <mat-list-item>email: {{ data.user?.email }}</mat-list-item>
+    <mat-list-item>address: {{ data.user?.address?.street }} {{ data.user?.address?.suite }}, {{ data.user?.address?.city }}</mat-list-item>
+    <mat-list-item>phone: {{ data.user?.phone }}</mat-list-item>
+    <mat-list-item *ngIf="data.user?.website">
+      website: <a [href]="data.user.website" target="_blank">{{ data.user.website }}</a>
+    </mat-list-item>
+    <mat-list-item>company: {{ data.user?.company?.name }}</mat-list-item>
+  </mat-list>
+</div>
