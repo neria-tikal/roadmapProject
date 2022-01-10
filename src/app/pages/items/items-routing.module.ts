@@ -9,20 +9,18 @@ const routes: Routes = [
   { 
     path: '',
     component: ItemsListComponent,
-    children: [
-      {
-        path: '/:id',
-        component: ItemViewComponent,
-      },
-      {
-        path: '/:id/add',
-        component: ItemFormComponent
-      },
-      {
-        path: '/:id/edit',
-        component: ItemFormComponent
-      },
-    ]
+  },
+  {
+    path: 'add',
+    component: ItemFormComponent
+  },
+  {
+    path: ':id/edit',
+    component: ItemFormComponent
+  },
+  {
+    path: ':id',
+    component: ItemViewComponent,
   },
 ];
 

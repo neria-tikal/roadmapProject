@@ -1,1 +1,14 @@
-<p>items-list works!</p>
+<h1 class="text-center">Items List</h1>
+
+<a *ngFor="let p of posts" [routerLink]="[p.id]" class="item-card-link">
+  <mat-card class="item-card-list">
+      <mat-card-title-group>
+        <mat-card-title>{{ p.title }}</mat-card-title>
+        <mat-card-subtitle>ID: {{ p.id }}</mat-card-subtitle>
+      <img mat-card-sm-image src="https://picsum.photos/200">
+    </mat-card-title-group>
+    <mat-card-content>
+      {{ p.body }}
+    </mat-card-content>
+  </mat-card>
+</a>

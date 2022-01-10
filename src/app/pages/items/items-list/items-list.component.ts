@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { FetchClient } from 'src/app/fetch-backend';
+import { map, take } from "rxjs/operators";
+import { JsonPlaceholderService } from 'src/app/services/json-placeholder.service';
+import { Post } from 'src/app/interfaces/post';
+
 
 @Component({
   selector: 'app-items-list',
@@ -7,9 +12,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ItemsListComponent implements OnInit {
 
-  constructor() { }
+  public posts: Post[] = [];
+
+  constructor(private jpService: JsonPlaceholderService) {}
 
   ngOnInit(): void {
+    this.loadData();
   }
+
+  loadData() {
+    this.jpService.getPosts()
+      .subscribe(data => {
+        console.log('data', data);
+        this.posts = data;
+      });
+  }
+
 
 }
