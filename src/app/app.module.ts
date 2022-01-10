@@ -12,6 +12,7 @@ import { HeaderComponent } from './layout/header/header.component';
 import { FooterComponent } from './layout/footer/footer.component';
 import { MenuComponent } from './layout/menu/menu.component';
 import {MatMenuModule} from '@angular/material/menu';
+import {MatCardModule} from '@angular/material/card';
 import { DahsboardComponent } from './pages/dahsboard/dahsboard.component';
 
 
@@ -32,6 +33,7 @@ import { DahsboardComponent } from './pages/dahsboard/dahsboard.component';
     MatButtonModule,
     LayoutModule,
     MatMenuModule,
+    MatCardModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

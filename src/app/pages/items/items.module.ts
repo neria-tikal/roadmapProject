@@ -4,6 +4,7 @@ import { ItemsListComponent } from './items-list/items-list.component';
 import { ItemViewComponent } from './item-view/item-view.component';
 import { ItemFormComponent } from './item-form/item-form.component';
 
+
 @NgModule({
   declarations: [
     ItemsListComponent,
@@ -11,7 +12,7 @@ import { ItemFormComponent } from './item-form/item-form.component';
     ItemFormComponent,
   ],
   imports: [
-    ItemsRoutingModule
+    ItemsRoutingModule,
   ],
   providers: [],
 })
