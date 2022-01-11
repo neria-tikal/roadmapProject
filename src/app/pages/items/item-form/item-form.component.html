@@ -1,1 +1,24 @@
 <p>item-form {{ formType }} {{ itemId }} works!</p>
+
+<form class="form" [formGroup]="itemForm" (ngSubmit)="onSubmit()">
+  <mat-form-field appearance="legacy">
+    <mat-label>Title</mat-label>
+    <input matInput formControlName="title">
+    <mat-hint>Hint</mat-hint>
+  </mat-form-field>
+
+  <mat-form-field appearance="legacy">
+    <mat-label>Select Category</mat-label>
+    <mat-select formControlName="categoryId">
+      <mat-option *ngFor="let c of categories" [value]="c.id">{{ c.name }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  
+  <mat-form-field appearance="legacy">
+    <mat-label>Body</mat-label>
+    <textarea matInput formControlName="body"></textarea>
+  </mat-form-field>
+
+
+  <button mat-raised-button color="primary" type="submit" [disabled]="!itemForm.valid">Submit</button>
+</form>

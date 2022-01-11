@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { CommonModule } from '@angular/common'
+import { CommonModule } from '@angular/common';
+import { StoreModule } from '@ngrx/store';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -9,7 +10,6 @@ import { HeaderComponent } from './layout/header/header.component';
 import { FooterComponent } from './layout/footer/footer.component';
 import { MenuComponent } from './layout/menu/menu.component';
 import { DahsboardComponent } from './pages/dahsboard/dahsboard.component';
-import { LoaderComponent } from './components/loader/loader.component';
 import {LayoutModule} from '@angular/cdk/layout';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
@@ -18,6 +18,9 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatCardModule} from '@angular/material/card';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { CounterComponent } from './components/counter/counter.component';
+import { counterReducer } from './reducers/counter.reducer';
+import { itemsReducer } from './reducers/items.reducer';
 
 
 @NgModule({
@@ -27,7 +30,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     FooterComponent,
     MenuComponent,
     DahsboardComponent,
-    // LoaderComponent,
+    CounterComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,6 +45,11 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     MatCardModule,
     MatDividerModule,
     MatProgressSpinnerModule,
+    StoreModule.forRoot({
+      count: counterReducer,
+      items: itemsReducer,
+    })
+    
     
   ],
   providers: [],

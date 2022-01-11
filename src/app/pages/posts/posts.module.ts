@@ -5,12 +5,12 @@ import { PostsRoutingModule } from './posts-routing.module';
 import { PostsListComponent } from './posts-list/posts-list.component';
 import { PostViewComponent } from './post-view/post-view.component';
 import { UserDetailsDialogComponent } from 'src/app/components/user-details-dialog/user-details-dialog.component';
+import { LoaderModule } from 'src/app/components/loader/loader.module';
 import {MatCardModule} from '@angular/material/card';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatListModule} from '@angular/material/list';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatButtonModule} from '@angular/material/button';
-import { LoaderModule } from 'src/app/components/loader/loader.module';
 
 
 @NgModule({
@@ -22,12 +22,12 @@ import { LoaderModule } from 'src/app/components/loader/loader.module';
   imports: [
     CommonModule,
     PostsRoutingModule,
+    LoaderModule,
     MatCardModule,
     MatDialogModule,
     MatListModule,
     MatTooltipModule,
     MatButtonModule,
-    LoaderModule
   ],
   providers: [],
 })

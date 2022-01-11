@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FetchClient } from 'src/app/fetch-backend';
-import { map, take } from "rxjs/operators";
-import { JsonPlaceholderService } from 'src/app/services/json-placeholder.service';
-import { Post } from '../../posts/posts.interfaces';
+import { Item } from '../items.interfaces';
+import { Observable } from 'rxjs';
+import { Store, select } from '@ngrx/store';
+import { Add, Remove } from '../../../actions/items.actions';
+import { ItemsService } from 'src/app/services/items.service';
 
 
 @Component({
@@ -12,23 +13,34 @@ import { Post } from '../../posts/posts.interfaces';
 })
 export class ItemsListComponent implements OnInit {
 
-  public busy = true;
-  public posts: Post[] = [];
+  public busy = false;
+  public items: Item[] = [];
 
-  constructor(private jpService: JsonPlaceholderService) {}
+  items$ : Observable<Item[]>;
+
+  constructor(private store: Store<{ items: Item[], action: any }>) {
+    this.items$ = store.pipe(select('items'));
+    console.log('this.items$', this.items$);
+  }
+
+  addItem() {
+    const data: Item = {
+      id: 100,
+      categoryId: 200,
+      title: 'added title',
+      body: 'added body'
+    }
+    console.log('addItem', data);
+    this.store.dispatch(Add({item: data}));
+    console.log('this.items$', this.items$);
+  }
+
+  removeItem(itemId: number) {
+    this.store.dispatch(Remove({id: itemId}));
+    console.log('this.items$', this.items$);
+  }
 
   ngOnInit(): void {
-    this.loadData();
   }
-
-  loadData() {
-    this.jpService.getPosts()
-      .subscribe((data: Post[]) => {
-        console.log('posts', data);
-        this.posts = data;
-        this.busy = false;
-      });
-  }
-
 
 }
