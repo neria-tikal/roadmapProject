@@ -1,6 +1,6 @@
 <h1 class="text-center">Items List</h1>
 
-<!-- <app-loader *ngIf="busy"></app-loader> -->
+<app-loader *ngIf="busy"></app-loader>
 
 <a *ngFor="let p of posts" [routerLink]="[p.id]" class="item-card-link">
   <mat-card class="item-card-list">

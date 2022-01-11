@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject} from '@angular/core';
 import {MAT_DIALOG_DATA} from '@angular/material/dialog';
-import { User } from 'src/app/interfaces/user';
+import { User } from 'src/app/pages/posts/posts.interfaces';
 
 
 @Component({

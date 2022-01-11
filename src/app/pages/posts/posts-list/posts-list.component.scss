@@ -1,0 +1,10 @@
+.item-card-link {
+  text-decoration: unset;
+  color: unset;
+}
+.item-card-list {
+  margin: 1rem;
+  &:hover {
+        box-shadow: 1px 2px 8px -1px rgb(103 58 183);
+  }
+}

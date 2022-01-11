@@ -1,19 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
+import { UserDetailsDialogComponent } from 'src/app/components/user-details-dialog/user-details-dialog.component';
 import { JsonPlaceholderService } from 'src/app/services/json-placeholder.service';
 import {MatDialog} from '@angular/material/dialog';
-import { Comment, Post, User } from '../../posts/posts.interfaces';
+import { Comment, Post, User } from '../posts.interfaces';
 
 
 @Component({
-  selector: 'app-item-view',
-  templateUrl: './item-view.component.html',
-  styleUrls: ['./item-view.component.scss']
+  selector: 'app-post-view',
+  templateUrl: './post-view.component.html',
+  styleUrls: ['./post-view.component.scss']
 })
-export class ItemViewComponent implements OnInit {
+export class PostViewComponent implements OnInit {
 
-  public busy = true;
-  public itemId = this.route.snapshot.params.id;
+  public busy = false;
+  public postId = this.route.snapshot.params.id;
   public post!: Post;
   public user!: User;
   public comments!: Comment[];
@@ -31,7 +32,8 @@ export class ItemViewComponent implements OnInit {
   }
   
   loadData() {
-    this.jpService.getPost(this.itemId)
+    this.busy = true;
+    this.jpService.getPost(this.postId)
       .subscribe((post: Post) => {
         console.log('post', post);
         this.post = post;
@@ -49,7 +51,7 @@ export class ItemViewComponent implements OnInit {
   }
 
   loadComments() {
-    this.jpService.getComments(this.itemId)
+    this.jpService.getComments(this.postId)
       .subscribe((comments: Comment[]) => {
         console.log('comments', comments);
         this.comments = comments;
@@ -58,11 +60,11 @@ export class ItemViewComponent implements OnInit {
 
   openUserDetails() {
     console.log('openUserDetails');
-    // this.dialog.open(UserDetailsDialogComponent, {
-    //   data: {
-    //     user: this.user,
-    //   },
-    // });
+    this.dialog.open(UserDetailsDialogComponent, {
+      data: {
+        user: this.user,
+      },
+    });
   }
 
 }

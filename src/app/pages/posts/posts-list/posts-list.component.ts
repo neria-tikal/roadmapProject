@@ -1,18 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { FetchClient } from 'src/app/fetch-backend';
-import { map, take } from "rxjs/operators";
 import { JsonPlaceholderService } from 'src/app/services/json-placeholder.service';
-import { Post } from '../../posts/posts.interfaces';
+import { Post } from '../posts.interfaces';
 
 
 @Component({
-  selector: 'app-items-list',
-  templateUrl: './items-list.component.html',
-  styleUrls: ['./items-list.component.scss']
+  selector: 'app-posts-list',
+  templateUrl: './posts-list.component.html',
+  styleUrls: ['./posts-list.component.scss']
 })
-export class ItemsListComponent implements OnInit {
+export class PostsListComponent implements OnInit {
 
-  public busy = true;
+  public busy = false;
   public posts: Post[] = [];
 
   constructor(private jpService: JsonPlaceholderService) {}
@@ -22,6 +20,7 @@ export class ItemsListComponent implements OnInit {
   }
 
   loadData() {
+    this.busy = true;
     this.jpService.getPosts()
       .subscribe((data: Post[]) => {
         console.log('posts', data);

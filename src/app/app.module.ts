@@ -9,6 +9,7 @@ import { HeaderComponent } from './layout/header/header.component';
 import { FooterComponent } from './layout/footer/footer.component';
 import { MenuComponent } from './layout/menu/menu.component';
 import { DahsboardComponent } from './pages/dahsboard/dahsboard.component';
+import { LoaderComponent } from './components/loader/loader.component';
 import {LayoutModule} from '@angular/cdk/layout';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
@@ -16,6 +17,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatCardModule} from '@angular/material/card';
 import {MatDividerModule} from '@angular/material/divider';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 
 @NgModule({
@@ -25,6 +27,7 @@ import {MatDividerModule} from '@angular/material/divider';
     FooterComponent,
     MenuComponent,
     DahsboardComponent,
+    // LoaderComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,6 +41,8 @@ import {MatDividerModule} from '@angular/material/divider';
     MatMenuModule,
     MatCardModule,
     MatDividerModule,
+    MatProgressSpinnerModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
