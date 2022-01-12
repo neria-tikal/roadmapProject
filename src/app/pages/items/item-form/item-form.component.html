@@ -1,14 +1,24 @@
-<p>item-form {{ formType }} {{ itemId }} works!</p>
+<h1 class="text-center">{{ formType | titlecase}} Item</h1>
+
+<button mat-button [routerLink]="['/items']">
+  <mat-icon>arrow_back</mat-icon>Back To Items
+</button>
 
 <form class="form" [formGroup]="itemForm" (ngSubmit)="onSubmit()">
-  <mat-form-field appearance="legacy">
-    <mat-label>Title</mat-label>
-    <input matInput formControlName="title">
-    <mat-hint>Hint</mat-hint>
+
+  <mat-form-field *ngIf="itemForm.controls.id.value" appearance="legacy">
+    <mat-label>ID</mat-label>
+    <input matInput disabled [value]="itemForm.controls.id.value">
   </mat-form-field>
 
   <mat-form-field appearance="legacy">
-    <mat-label>Select Category</mat-label>
+    <mat-label>* Title</mat-label>
+    <input matInput formControlName="title">
+    <!-- <mat-hint>Hint</mat-hint> -->
+  </mat-form-field>
+
+  <mat-form-field appearance="legacy">
+    <mat-label>* Select Category</mat-label>
     <mat-select formControlName="categoryId">
       <mat-option *ngFor="let c of categories" [value]="c.id">{{ c.name }}</mat-option>
     </mat-select>
@@ -19,6 +29,7 @@
     <textarea matInput formControlName="body"></textarea>
   </mat-form-field>
 
+  <mat-checkbox formControlName="done">Done</mat-checkbox>
 
   <button mat-raised-button color="primary" type="submit" [disabled]="!itemForm.valid">Submit</button>
 </form>

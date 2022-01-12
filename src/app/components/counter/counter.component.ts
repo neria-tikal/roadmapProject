@@ -6,7 +6,7 @@ import { increment, decrement, reset } from '../../actions/counter.actions';
 @Component({
   selector: 'app-counter',
   templateUrl: './counter.component.html',
-  styleUrls: ['./counter.component.css'],
+  styleUrls: ['./counter.component.scss'],
 })
 export class CounterComponent {
   count$: Observable<number>;

@@ -3,6 +3,7 @@ export interface Item {
   title: string;
   body: string;
   categoryId: number;
+  done: boolean;
 }
 
 export interface Category {
