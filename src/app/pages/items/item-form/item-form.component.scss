@@ -2,7 +2,14 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  .mat-form-field {
+  .mat-form-field, .item-checkbox {
     width: 30rem;
+    margin: 1rem 0;
+  }
+  .item-checkbox {
+    text-align: left;
+  }
+  .mat-form-field-appearance-legacy .mat-hint {
+    color: #f44336;
   }
 }

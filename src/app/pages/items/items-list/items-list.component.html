@@ -12,6 +12,7 @@
     <mat-card-title-group>
       <mat-card-title>{{ item.title }}</mat-card-title>
       <mat-card-subtitle>ID: {{ item.id }}</mat-card-subtitle>
+      <!-- <mat-checkbox [value]="item.done">Done</mat-checkbox> -->
       <mat-icon class="icon-done" *ngIf="item.done" mat-card-sm-image>check_circle_outline</mat-icon>
     </mat-card-title-group>
     <mat-card-content>

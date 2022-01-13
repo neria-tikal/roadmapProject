@@ -1,16 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { CATEGORIES } from '../items.consts';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Item } from '../items.interfaces';
 import { Store, select } from '@ngrx/store';
-import { Observable } from 'rxjs';
 import { getItemById } from 'src/app/selectors/items.selector';
 import { AppState } from 'src/app/app.interfaces';
-import { ItemViewComponent } from '../item-view/item-view.component';
 import { Add, Edit } from 'src/app/actions/items.actions';
-// import { getItemById } from 'src/app/selectors/items.selector';
-
 
 @Component({
   selector: 'app-item-form',
@@ -25,9 +20,9 @@ export class ItemFormComponent {
 
   public itemForm = new FormGroup({
     id: new FormControl(),
-    title: new FormControl('', [Validators.required, Validators.minLength(4)]),
-    body: new FormControl(''),
     categoryId: new FormControl(null, Validators.required),
+    title: new FormControl({value: '', disabled: true}, [Validators.required, Validators.minLength(4)]),
+    body: new FormControl({value: '', disabled: true}),
     done: new FormControl(false),
   });
 
@@ -43,11 +38,26 @@ export class ItemFormComponent {
           if (!item) {
               this.router.navigate(['items', 'add']);
           } else {
-            console.log('item', item);
             this.itemForm.patchValue(item);
+            if (!!item.categoryId) {
+              this.itemForm.get('title')?.enable();
+              this.itemForm.get('body')?.enable();
+            }
           }
         });
     }
+
+    this.itemForm.controls['categoryId'].valueChanges.subscribe(change => {
+      const ctrlTitle = this.itemForm.get('title');
+      const ctrlBody = this.itemForm.get('body');
+      if (!!change) {
+        ctrlTitle?.enable();
+        ctrlBody?.enable();
+      } else {
+        ctrlTitle?.disable();
+        ctrlBody?.disable();
+      }
+    });
   }
 
   onSubmit() {
